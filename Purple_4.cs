@@ -17,9 +17,9 @@ namespace Lab_8
         {
             if (_input == null || _codes == null) return;
             string result = _input;
-            for (int i = 0; i < _codes.Length; i++)
+            foreach (var code in _codes) 
             {
-                result = result.Replace(_codes[i].Item2.ToString(), _codes[i].Item1);
+                result = result.Replace(code.Item2.ToString(), code.Item1);
             }
             _output = result;
 
