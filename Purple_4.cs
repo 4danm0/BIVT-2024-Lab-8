@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 
 namespace Lab_8
@@ -6,8 +6,8 @@ namespace Lab_8
     public class Purple_4 : Purple
     {
         private (string, char)[] _codes;
-
-        public (string, char)[] Codes => _codes;
+        private string _output;
+        public string Output => _output;
 
         public Purple_4(string input, (string, char)[] codes) : base(input)
         {

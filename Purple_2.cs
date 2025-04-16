@@ -1,13 +1,12 @@
-using System;
+﻿using System;
 using System.Linq;
 
 namespace Lab_8
 {
     public class Purple_2 : Purple
     {
-        private new string[] _output;
-
-        public new string[] Output => _output;
+        private string[] _output;
+        public string[] Output => _output;
         public Purple_2(string input) : base(input) { }
 
         public override void Review()
@@ -50,7 +49,7 @@ namespace Lab_8
         {
             if (_output == null) return null;
 
-            return String.Join(Environment.NewLine, _output);
+            return string.Join(Environment.NewLine, _output);
         }
     }
 }
