@@ -15,8 +15,8 @@ namespace Lab_8
         }
         public override void Review()
         {
-            if (_input == null || _codes == null) return;
-            string result = _input;
+            if (Input == null || _codes == null) return;
+            string result = Input;
             foreach (var code in _codes) 
             {
                 result = result.Replace(code.Item2.ToString(), code.Item1);

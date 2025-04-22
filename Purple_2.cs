@@ -11,9 +11,9 @@ namespace Lab_8
 
         public override void Review()
         {
-            if (_input == null) return;
+            if (Input == null) return;
 
-            string[] words = _input.Split(' ');
+            string[] words = Input.Split(' ');
             string[] lines = new string[0];
             string line = "";
             

@@ -5,6 +5,8 @@ namespace Lab_8
 {
     public class Purple_1 : Purple
     {
+        private string _output;
+        public string Output => _output;
         public Purple_1(string input) : base(input) { }
         private string Reverse(string s)
         {
@@ -46,12 +48,12 @@ namespace Lab_8
         public override void Review()
         {
 
-            if (_input == null) return;
+            if (Input == null) return;
 
             string[] strSplit = Input.Split(' ');
             for (int i = 0; i < strSplit.Length; i++)
             {
-                if (HasNumber(strSplit[i])) continue;
+                if (strSplit[i].Any(c => _numbers.Contains(c))) continue;
                 strSplit[i] = Reverse(strSplit[i]);
             }
             _output = String.Join(" ", strSplit).ToString();

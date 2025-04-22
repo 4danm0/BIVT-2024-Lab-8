@@ -7,21 +7,23 @@ namespace Lab_8
     public class Purple_3 : Purple
     {
         private (string, char)[] _codes;
-
+        private string _output;
         public (string, char)[] Codes => _codes;
+        
+        public string Output => _output;
 
         public Purple_3(string input) : base(input) { }
         
         public override void Review()
         {
-            if (_input == null) return;
+            if (Input == null) return;
 
-            (string Pair, int Count)[] pairs = new (string, int)[_input.Length];
+            (string Pair, int Count)[] pairs = new (string, int)[Input.Length];
             int uniquePairsCount = 0;
 
-            for (int i = 0; i < _input.Length - 1; i++)
+            for (int i = 0; i < Input.Length - 1; i++)
             {
-                string pair = _input.Substring(i, 2);
+                string pair = Input.Substring(i, 2);
                 bool found = false;
                 if (char.IsLetter(pair[0]) && char.IsLetter(pair[1]))
                 {
@@ -66,7 +68,7 @@ namespace Lab_8
                 }
             }
             bool[] usedSymbols = new bool[126 - 33 + 1];
-            foreach (char c in _input)
+            foreach (char c in Input)
             {
                 int asciiCode = (int)c;
                 if (asciiCode >= 33 && asciiCode <= 126)
@@ -91,7 +93,7 @@ namespace Lab_8
                 }
             }
 
-            string result = _input;
+            string result = Input;
             for (int i = 0; i < _codes.Length; i++)
             {
                 var (pair, code) = _codes[i];

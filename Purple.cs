@@ -6,10 +6,9 @@ namespace Lab_8
 {
     public abstract class Purple
     {
-        protected string _input;
-        protected string _output;
+        private string _input;
         public string Input => _input;
-        public string Output => _output;
+
 
         static protected readonly char[] _enders = { '.', '!', '?' };
         static protected readonly char[] _signs = { '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' };
@@ -21,11 +20,7 @@ namespace Lab_8
         {
             _input = input;
         }
-        protected static bool HasNumber(string s) => s.Any(c => _numbers.Contains(c));
+       
         public abstract void Review();
-        public override string ToString()
-        {
-            return _output;
-        }
     }
 }
