@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
+using System.Text;
 
 namespace Lab_8
 {
@@ -7,57 +9,56 @@ namespace Lab_8
     {
         private string _output;
         public string Output => _output;
+
         public Purple_1(string input) : base(input) { }
+
         private string Reverse(string s)
         {
-            if (s == null) return null;
-            if (s.Length <= 1) return s;
+            if (string.IsNullOrEmpty(s)) return s;
 
             int start = 0;
+            while (start < s.Length && _signs.Contains(s[start]))
+                start++;
+
             int end = s.Length - 1;
-            int flag1 = 0;
-            int flag2 = 0;
-            string endStr = string.Empty;
-            string startStr = string.Empty;
-            for(int i = start, j = end; i <= end; i++, j--)
-            {
-                if (flag1 == 1 && flag2==1) break;
-                if (!_allsigns.Contains(s[i]) && flag1 != 1)
-                {
-                    
-                    start = i;
-                    flag1 = 1;
-                }
-                if (_signs.Contains(s[i])) startStr = startStr+s[i];
-                if (!_allsigns.Contains(s[j]) && flag2 != 1)
-                {
-  
-                    end = j;
-                    flag2 = 1;
-                }
-                if (_signs.Contains(s[j])) endStr = s[j]+endStr ;
-                
-            }
-            s = s.Substring(start, end-start+1);
-            string reversed = new string(s.Reverse().ToArray());
-            reversed = reversed.Insert(0, startStr);
-            reversed = string.Concat(reversed, endStr);
-            return reversed;
-            
+            while (end >= 0 && _signs.Contains(s[end]))
+                end--;
+
+            if (start > end) return s;
+
+            string prefix = s.Substring(0, start);
+            string suffix = s.Substring(end + 1);
+            string word = s.Substring(start, end - start + 1);
+
+            string reversedWord = new string(word.Reverse().ToArray());
+
+            return prefix + reversedWord + suffix;
         }
+
         public override void Review()
         {
-
-            if (Input == null) return;
+            if (string.IsNullOrEmpty(Input))
+            {
+                _output = Input;
+                return;
+            }
 
             string[] strSplit = Input.Split(' ');
+
             for (int i = 0; i < strSplit.Length; i++)
             {
-                if (strSplit[i].Any(c => _numbers.Contains(c))) continue;
+                if (strSplit[i].Any(c => _numbers.Contains(c)))
+                    continue;
+
                 strSplit[i] = Reverse(strSplit[i]);
             }
-            _output = String.Join(" ", strSplit).ToString();
 
+            _output = string.Join(" ", strSplit);
+        }
+
+        public override string ToString()
+        {
+            return _output ?? string.Empty;
         }
     }
 }
