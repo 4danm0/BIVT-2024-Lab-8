@@ -20,7 +20,7 @@ namespace Lab_8
 
             string[] lines = new string[0];
             string[] currentLineWords = new string[0];
-            int currentLength = 0;
+            int currentLength = -1;
 
             for (int i = 0; i < words.Length; i++)
             {
